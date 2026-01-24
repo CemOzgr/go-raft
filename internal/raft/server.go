@@ -65,7 +65,7 @@ func (server *Server) AppendEntries(
 		panic(err)
 	}
 
-	if log.term != leaderTerm {
+	if log.Term != leaderTerm {
 		return server.currentTerm, false
 	}
 
@@ -101,7 +101,7 @@ func (server *Server) AppendEntries(
 			panic(e)
 		}
 
-		maxIndex = maths.Max(maxIndex, entry.index)
+		maxIndex = maths.Max(maxIndex, entry.Index)
 	}
 
 	if leaderCommit > server.commitIndex {
